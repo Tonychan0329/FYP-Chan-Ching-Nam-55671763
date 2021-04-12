@@ -1,0 +1,37 @@
+{% extends 'admin_layout.html' %}
+{% block body %}
+<div>
+  <a href="/admin_service" class="btn btn-outline-dark">Back</a>
+</div>
+<div class="jumbotron text-center text-info">
+    <h1>Edit Product Item</h1>
+    <div class="text-center text-success">{{ msg }}</div>
+</div>
+{% for row in data %}
+<form action="http://127.0.0.1:5000/service_update" method="POST" >
+  <div class="form-group">
+    <label for="id">ID:</label>
+    <input type="text" value="{{row[0]}}" class="form-control" id="id" name="id" readonly>
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" value="{{row[1]}}" class="form-control" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input type="text" value="{{row[3]}}" class="form-control" id="description" name="description">
+  </div>
+  <div class="form-group">
+    <label for="service_detail">Service Detail:</label>
+    <input type="text" value="{{row[4]}}" class="form-control" id="detail" name="detail">
+  </div>
+  <div class="form-group">
+    <label for="image">Image:</label>
+    <input type="text" value="{{row[2]}}" class="form-control" id="image" name="image">
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endfor %}
+{% endblock %}

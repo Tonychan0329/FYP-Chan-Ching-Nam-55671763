@@ -1,0 +1,26 @@
+{% extends 'admin_layout.html' %}
+{% block body %}
+<h2>Payment Detail</h2>
+<table class="table table-borderless">
+    <thead>
+      <tr class="table-info">
+        <th>#</th>
+        <th>Order ID</th>
+        <th>Credit Card</th>
+        <th>Card Holder</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+    {% for row in data %}
+    <tbody>
+      <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+      </tr>  
+    </tbody>
+    {% endfor %}
+  </table>
+{% endblock %}

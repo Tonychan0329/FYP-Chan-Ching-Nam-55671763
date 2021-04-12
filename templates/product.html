@@ -1,0 +1,47 @@
+<style>
+    .col-4 img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
+    .container{
+        margin: 20%;
+    }
+</style>
+{% extends 'layout.html' %}
+{% block title %}Service Center for Elderly | Booking system{% endblock %}
+    {% block body %}
+    <div class="container">
+        {% if not session['loggedin'] %}
+        <div>
+            <a href="/" class="btn btn-outline-dark">Back</a>
+        </div>
+        {% else %}
+        <div>
+            <a href="/groceries" class="btn btn-outline-dark">Back</a>
+        </div>
+        {% endif %}
+        {% for row in data%}
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <img src="{{url_for('static', filename='images/' + row[2])}}" alt="">
+            </div>
+            <div class="col-6">
+                <div>
+                    <h3>{{row[1]}}</h3>
+                </div>
+                <div>
+                    <h4>HK${{row[3]}}</h4>
+                    <p>{{row[5]}}</p>
+                </div>
+
+                <div>
+                    <a href="/addtocart?P_ID={{row[0]}}"><p>Add To Cart <i class="fas fa-shopping-cart"></i></p></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

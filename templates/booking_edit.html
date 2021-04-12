@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}Your Booking{% endblock %}
+    {% block body %}
+<a href="/booking_record" class="btn btn-outline-dark" style="margin-left: 5%;">Back</a>
+<div class="jumbotron text-center text-info">
+    <h1>Edit booking detail</h1>
+    <div class="text-center text-success">{{ msg }}</div>
+    <div class="text-center text-danger">{{ error }}</div>
+</div>
+<div class="container">
+
+{% for row in record %}
+<form action="http://127.0.0.1:5000/booking_edit" method="POST" >
+    <div class="form-group">
+        <input type="hidden" id="id" name="id" value="{{row[0]}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{row[4]}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" value="{{row[6]}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" value="{{row[7]}}" class="form-control" >
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="{{row[2]}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="service">Service Type:</label>
+        <input type="text" id="service" name="service" value="{{row[5]}}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="date">Booking Date </label>
+        <input type="date" id="date" name="date" value="{{row[8]}}" min='{{now}}' class="form-control" >
+    </div>
+    <div class="form-group">
+        <label for="time">Booking Time</label>
+        <input type="time" id="time" name="time" value="{{row[9]}}" min="09:00" max="18:00" class="form-control">
+    </div>
+    <div>
+        <input class="btn btn-outline-info " type="submit" value="Edit" class="form-control">
+    </div>
+</form>
+{% endfor %}
+</div>
+    {% endblock %}

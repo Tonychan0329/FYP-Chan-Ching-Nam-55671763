@@ -1,0 +1,27 @@
+{% extends 'admin_layout.html'%}
+{% block body%}
+<div class="text-left">
+    <a href="/admin_order"><button class="btn btn-outline-dark">Back</button></a>
+</div>
+<h2>Order Product Detail</h2>
+<table class="table table-borderless">
+    <thead>
+      <tr class="table-info">
+        <th>#</th>
+        <th>Product Name</th>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    {% for row in detail %}
+    <tbody>
+      <tr>
+        <td>{{row[1]}}</td>
+        <td>{{row[3]}}</td>
+        <td><img src="{{url_for('static', filename='images/' + row[4])}}" style="width: 100px;"></td>
+        <td>${{row[5]}}</td>
+      </tr>  
+    </tbody>
+    {% endfor %}
+  </table>
+{% endblock %}

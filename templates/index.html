@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% extends 'layout.html' %}
+{% block title %}Service Center for Elderly | Booking system{% endblock %}
+    {% block body %}
+
+    	<div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h1>Get Your Service<br>A New Attempt!</h1>
+                    <p>Really care about the elderly, 
+                        don't just care about the form, <br>
+                        don't express care during the festival, 
+                        and don't need to use <br>money and material to measure the degree of care.</p>
+            {% if not session['loggedin'] %}
+                    <button class="btn"><a href="/login" >Booking Service Now</a></button>
+            {% else %}
+                    <button class="btn"><a href="/service" >Booking Service Now</a></button>    
+            {% endif %}
+                </div>
+                <div class="col-2">
+                    <img src="{{url_for('static', filename='images/img-3.png')}}" alt="">
+                </div>
+            </div>  
+        </div>
+<hr>
+<!----------- featured categories ----------->
+        <div class="categories" id="about">
+            <div class="small-container">
+                <h2 class="title">About</h2>
+                <div class="row">
+                    <div class="col-3">
+                        <a href="/service"><img src="{{url_for('static', filename='images/bg-1.png')}}" alt=""></a>
+                        <a href="/service"><p>Household Service</p></a>
+                    </div>
+                    <div class="col-3">
+                        <a href="/groceries"><img src="{{url_for('static', filename='images/bg-2.png')}}" alt=""></a>
+                        <a href="/groceries"><p>Groceries Shop</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr>
+<!----------- featured products ----------->
+        <div class="small-container">
+            <h2 class="title">Featured Products</h2>
+            <div class="row">
+                {% for row in item%}
+                <div class="col-4">
+                    <a href="/product?P_ID={{row[0]}}">
+                        <img src="{{url_for('static', filename='images/' + row[2] )}}" alt="">
+                        <h4>{{row[1]}}</h4>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>${{row[3]}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+<hr>
+<!----------- featured service ----------->   
+        <div class="small-container">           
+            <h2 class="title">Other Service</h2>
+            <div class="row">
+                {% for row in service %}
+                <div class="col-4">
+                    <a href="/servicebooking?serviceId={{row[0]}}">
+                        <img src="{{url_for('static', filename='images/' + row[2] )}}" alt="">
+                        <h4>{{row[1]}}</h4>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+<hr>
+
+<!----------- offer 
+        <div class="offer">
+            <div class="small-container">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="#" class="offer-img">
+                    </div>
+                    <div class="col-2">
+                        <p>hello</p>
+                        <h1>hello</h1>
+                        <small>bye bye</small>
+                        <a href="#" class="btn">Buy Now &#8594;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr>     
+----------->   
+<!----------- testimonial 
+        <div class="testimonial">
+            <div class="small-container">
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr>----------->
+<!----------- brands 
+        <div class="brands">
+            <div class="small-container">
+                <div class="row">
+                    <div class="col-5">
+                        <img src="#" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr>
+----------->
+    {% endblock %}

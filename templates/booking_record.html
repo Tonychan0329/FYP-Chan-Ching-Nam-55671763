@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/record.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% extends 'layout.html' %}
+{% block title %}Your Booking{% endblock %}
+    {% block body %}
+    <div class="jumbotron text-center" >
+        <h1>Household Service Booking Detail</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"> </th>
+                                <th scope="col">Service Type</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col" class="text-center">Booking Date</th>
+                                <th scope="col" class="text-right">Time</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                          {% for row in record %}
+                            <tr>
+                                <td></td>
+                                <td>{{row[5]}}</td>
+                                <td>{{row[6]}}</td>
+                                <td>{{row[7]}}</td>
+                                <td>{{row[8]}}</td>
+                                <td >{{row[9]}}</td>
+                                <td class="text-right"><a href="/booking_edit?B_ID={{row[0]}}" class="btn btn-sm btn-outline-warning">Edit</a></td>
+                                <td class="text-right">
+                                    <form action="{{url_for('booking_delete', B_ID = row[0])}}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" value="Delete" class="btn btn-outline-danger">
+                                    </form>
+                                </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

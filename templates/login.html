@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/login&register.css')}}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+
+
+{% extends 'layout.html' %}
+{% block title %}Login{% endblock %}
+{% block body %}
+
+
+    <div class="login">
+        <h1>Login</h1>
+        <div class="links">
+            <a href="/login" class="active">Login</a>
+            <a href="/register">Register</a>
+        </div>
+        <form class="ajax-form" action="http://127.0.0.1:5000/login" method="post">
+            <label for="username">
+                <i class="fas fa-user"></i>
+            </label>
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password">
+                <i class="fas fa-lock"></i>
+            </label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <!--<label id="rememberme">
+                <input type="checkbox" name="rememberme">Remember me
+            </label>-->
+            <div class="msg">{{ msg }}</div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+{% endblock %}
+

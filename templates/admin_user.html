@@ -1,0 +1,55 @@
+{% extends 'admin_layout.html'%}
+{% block body%}
+<h2>Account</h2>
+<hr>
+<h2>Users</h2>
+<table class="table table-borderless">
+  <thead>
+    <tr class="table-info">
+      <th>User ID</th>
+      <th>User Nmae</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+  </thead>
+  {% for row in user %}
+  <tbody>
+    <tr>
+      <td>{{row[0]}}</td>
+      <td>{{row[1]}}</td>
+      <td>{{row[3]}}</td>
+      <td>{{row[7]}}</td>
+      <td>{{row[6]}}</td>
+      <td>
+        <form action="{{url_for('delete_user', userId = row[0])}}" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete" class="btn btn-outline-danger">
+        </form>
+      </td>
+    </tr>  
+  </tbody>
+  {% endfor %}
+</table>
+<hr>
+<h2>Admin</h2>
+<table class="table table-borderless">
+  <thead>
+    <tr class="table-info">
+      <th>Admin ID</th>
+      <th>Admin Email</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  {% for row in admin %}
+  <tbody>
+    <tr>
+      <td>{{row[0]}}</td>
+      <td>{{row[1]}}</td>
+      <td>{{row[2]}}</td>
+    </tr>  
+  </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

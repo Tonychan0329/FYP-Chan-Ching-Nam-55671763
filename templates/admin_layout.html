@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="cdn.jsdeliver.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    {% include 'includes/admin_navbar.html' %}
+
+    <div class="main-content">
+        <header>
+            <div>
+                <i class="fas fa-user"></i> Welcome Admin {{session['adminemail']}}!
+            </div>
+            <div class="social-icons">
+                <span class="ti-bell"></span>
+                <span class="ti comment"></span>
+                <div></div>
+            </div>
+        </header>
+        <main>
+            {% block body %} {% endblock %}
+        </main>
+    </div>
+</body>
+</html>

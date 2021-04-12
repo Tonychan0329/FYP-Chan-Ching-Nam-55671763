@@ -1,0 +1,45 @@
+<style>
+    .container{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+{% extends 'admin_layout.html' %}
+{% block body %}
+<a href="/admin_groceries"><i class="far fa-arrow-alt-circle-left fa-3x"></i></a>
+<h3 class="text-center">Add Product Item</h3>
+<div class="text-center text-success">{{ msg }}</div>
+<hr>
+<div class="container">
+    <form action="http://127.0.0.1:5000/add_product" method="POST" >
+        <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name='name' >
+        </div>
+        <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" class="form-control" id="price" name="price">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="description" name="description" >
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control" id="image" name="image" >
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="text" class="form-control" id="stock" name="stock" >
+        </div>
+        <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" class="form-control" id="status" name="status" >
+    </div>
+        <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

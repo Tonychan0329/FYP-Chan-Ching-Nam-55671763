@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/groceries.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+{% extends 'layout.html' %}
+{% block title %}Groceries{% endblock %}
+    {% block body %}
+    <section class="container-fluid col-sm-12">
+        <img src="{{url_for('static', filename='images/groceries.jpg')}}" alt="">
+    </section>
+        
+    <div class="jumbotron text-center" >
+        <h1>Daily Necessities</h1>
+        <p>Enjoy the shopping</p> 
+    </div>
+    
+    <div class="categories">
+        <div class="small-container">
+            <div class="row">
+              {% for row in data%}
+              <div class="col-3">
+                  <a href="/product?P_ID={{row[0]}}">
+                    <img src="{{url_for('static', filename='images/' + row[2])}}" alt="product">
+                  </a>
+                  <p class="text-center">{{row[1]}}</p>
+                  <p class="text-center">HK$ {{row[3]}}</p>
+                  <a href="/addtocart?P_ID={{row[0]}}"><p>Add To Cart <i class="fas fa-shopping-cart"></i></p></a>
+              </div>
+              {% endfor %}
+            </div>
+            
+        </div>
+      </div>
+    {% endblock %}

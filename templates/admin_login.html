@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Admin Signin</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    
+    <!-- Custom styles for this template -->
+<link href="{{url_for('static', filename='css/admin_login.css')}}" rel="stylesheet">
+  </head>
+  <body class="text-center">
+
+<main class="form-signin">
+  <img class="mb-4" src="{{url_for('static', filename='images/logo-10.png')}}" alt="" width="100">
+  <form action="http://127.0.0.1:5000/admin_login" method="POST">
+        <h3>Admin Log In</h3>
+        <label for="inputEmail" class="visually-hidden"></label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="visually-hidden"></label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+        <div>{{msg}}</div>
+    <button class="w-100 btn btn-lg btn-outline-dark" type="submit">Log In</button>
+  </form>
+</main>
+
+
+    
+  </body>
+</html>

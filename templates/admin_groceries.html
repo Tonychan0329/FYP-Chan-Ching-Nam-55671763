@@ -1,0 +1,56 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% extends 'admin_layout.html'%}
+{% block body%}
+<h2>Product Detail</h2>
+<a href="/add_product" class="btn btn-outline-primary" style="margin: 10px;">Add Product</a>
+<div class="form-group">
+  <input id="myInput" style="width: 400px; align-items: center;" class="form-control" type="text" placeholder="Search" autocomplete="off" autofocus>
+</div>
+<table class="table table-borderless">
+    <thead>
+      <tr class="table-info">
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Product Image</th>
+        <th>Product Price</th>
+        <th>Stock</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    {% for row in product %}
+    <tbody id="myTable">
+      <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td><img src="{{url_for('static', filename='images/' + row[2])}}" alt="" style="width: 100px;"></td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+        <td>{{row[6]}}</td>
+        <td><a href="/product_edit?productId={{row[0]}}" class="btn btn-outline-warning">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_product', productId = row[0])}}" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-outline-danger">
+          </form>
+        </td>
+      </tr>  
+    </tbody>
+    {% endfor %}
+  </table>
+<script>
+  $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      });
+  });
+</script>
+{% endblock %}

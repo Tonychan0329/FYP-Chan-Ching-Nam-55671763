@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/service.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+{% extends 'layout.html' %}
+{% block title %}Confilm Booking{% endblock %}
+    {% block body %}
+  <section class="container-fluid col-sm-12">
+    <img src="{{url_for('static', filename='images/senior_care.png')}}" alt="">
+  </section>
+    
+    <div class="jumbotron text-center" >
+        <h1>Please check your booking detail!</h1>
+        <p>Here is your booking state! Or you check the detail on your <a href="/booking_record">booking history</a></p>
+        {% if not error %}
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>{{success}}</strong>
+        </div>
+        {% else %}
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{error}}</strong>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}

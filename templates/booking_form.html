@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/booking_form.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'layout.html' %}
+{% block title %}Service Booking{% endblock %}
+    {% block body %}
+        {% for row in serviceData%}
+            <section class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <img src="{{url_for('static', filename='images/' + row[2])}}" alt="icon">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <form action="http://127.0.0.1:5000/servicebooked" class="ajax-form" method="post" autocomplete="off">
+                            <input type="hidden" id="serviceId" name="serviceId" value="{{row[0]}}">
+                            <div>
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" value="{{row[3]}}{{row[4]}}" required>
+                                <p id="name" name="name">{{row[3]}}{{row[4]}}</p>
+                            </div>
+                            <div>
+                                <label for="address">Address:</label>
+                                <input type="text" id="address" name="address" value="{{row[5]}}" required>
+                                <p id="address" name="address">{{row[5]}}</p>
+                            </div>
+                            <div>
+                                <label for="phone">Phone:</label>
+                                <input type="text" id="phone" name="phone" value="{{row[7]}}" required >
+                                <p id="phone" name="phone">{{row[7]}}</p>
+                            </div>
+                            <div>
+                                <label for="email">Email:</label>
+                                <input type="text" id="email" name="email" value="{{row[6]}}" required>
+                                <p id="email" name="email">{{row[6]}}</p>
+                            </div>
+                            <div>
+                                <label for="service">Service Type:</label>
+                                <input type="text" id="service" name="service" value="{{row[1]}}" required readonly>
+                                <p id="service" name="service">{{row[1]}}</p>
+                            </div>
+                        <hr>
+                            <div>
+                                <label for="date">Booking Date </label>
+                                <input type="date" id="date" name="date" min='{{now}}' required>
+                            </div>
+                            <div>
+                                <label for="time">Booking Time</label>
+                                <input type="time" id="time" name="time" min="09:00" max="18:00" required>
+                            </div>
+                            <div>
+                                <input class="btn btn-outline-info " type="submit" value="Booking Now">
+                            </div>   
+                        </form>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+    {% endblock %}

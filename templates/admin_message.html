@@ -1,0 +1,17 @@
+{% extends 'admin_layout.html'%}
+{% block body%}
+
+<div class="container mt-3">
+    <h2>User Message</h2>
+    {% for row in data%}
+    <div class="media border p-3">
+      <div class="media-body">
+        <h4>{{row[1]}}<small style="margin-left: 10%;">Sended by {{row[2]}}</small></h4>
+        <p><strong>{{row[3]}}</strong></p>
+        <p>{{row[4]}}</p>
+      </div>
+      <i class="fas fa-user mt-4 fa-2x"></i>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

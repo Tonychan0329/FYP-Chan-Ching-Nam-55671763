@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block title %}SCE | checkout{% endblock %}
+    {% block body %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h2>Confirm Order Placement</h2>
+        </div>
+    </section>
+      
+    <form action="http://127.0.0.1:5000/place_order" method="POST">
+        <table class="table table-striped">
+            <tr>
+                <th>SNo.</th>
+                <th>NAME</th>
+                <th>AMOUNT</th>
+            </tr>
+            {% for row in order %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[3]}}</td>
+                <td>HKD$ {{row[5]}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>TOTAL AMOUNT : HKD$ {{totalPrice}}</td>
+            </tr>
+        </table>
+            <input type="hidden" value="{{now}}" id="date" name="date">
+            <input type="hidden" value="{{totalPrice}}" id="totalprice" name="totalprice">
+        <div>
+            <input type="submit" class="btn btn-outline-primary" value="PLACE ORDER">
+        </div>
+    </form>
+    
+    <a href="/shoppingCart"><button class="btn btn-outline-danger">Cancle</button></a>
+    {% endblock %}

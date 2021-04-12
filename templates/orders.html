@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="{{url_for('static', filename='css/record.css')}}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% extends 'layout.html' %}
+{% block title %}Your Order{% endblock %}
+    {% block body %}
+    <div class="jumbotron text-center" >
+        <h1>Your Order Detail</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Shipping</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for row in orders %}
+                            <tr>
+                                <td>{{row[0]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                                <td>{{row[5]}}</td>
+                                <td class="text-right"><a href="/order_detail?invoice={{row[0]}}"><button class="btn btn-sm btn-outline-dark">Invoice</button> </a></td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

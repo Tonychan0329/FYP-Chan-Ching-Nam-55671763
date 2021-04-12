@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-info sticky-top">
+    <a class="navbar-brand " href="/"><img src="{{url_for('static', filename='images/logo-10.png')}}" style="width: 150px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarCollapse">
+    {% if not session['loggedin'] %}
+    <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+        <li class="nav-item active"><a class="nav-link" href="/message">Contact-Us</a></li>
+        <li class="nav-item active"><a class="nav-link" href="/login">Login</a></li>
+        <!--<button class="btn" id="change">Change Language</button>-->
+    </ul>
+    <a href="/login"><img src="{{url_for('static', filename='images/cart.png')}}" width="30px" height="30px"></a>
+    
+    {% else %}
+    <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+        <li class="nav-item active"><a class="nav-link" href="/message">Contact Us</a></li>
+        <li class="nav-item active"><a class="nav-link" href="/groceries">Groceries</a></li>
+        <li class="nav-item active"><a class="nav-link" href="/service">Service Booking</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                Hello, {{session['username']}}</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/booking_record">Your Booking Records</a>
+                <a class="dropdown-item" href="/order">Your Order Detail</a>
+                <a class="dropdown-item" href="/profile">Your Profile</a>
+                <a class="dropdown-item" href="/changepassword">Edit Your Password</a>
+            </div>
+        </li>
+        <li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+    <a href="/shoppingCart"><img src="{{url_for('static', filename='images/cart.png')}}" width="30px" height="30px"></a>
+    <!--<form class="form-inline" action="/search" method="POST">
+        <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+    </form>-->
+    {% endif %}
+    </div>
+</nav>

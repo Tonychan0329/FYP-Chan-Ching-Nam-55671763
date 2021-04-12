@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    padding-bottom: 50px; 
+    padding-top: 50px;
+}
+
+.container-sm{
+    max-width: 1300px;
+    margin-right: 25px;
+    margin-left: 25px;
+    margin: auto;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.box{
+    width: 200px;
+    align-items: centers;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.col-2{
+    flex-basis: 50%;
+    min-width: 500px;
+}
